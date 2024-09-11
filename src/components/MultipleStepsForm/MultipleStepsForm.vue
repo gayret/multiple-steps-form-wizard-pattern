@@ -47,32 +47,33 @@ const setActiveStepId = id => activeStepId.value = id
     border: 1px solid lightgray;
     padding: 1rem;
     border-radius: .5rem;
+
+    & .steps-number ul {
+        all: unset;
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: lightgray;
+        padding: .3rem;
+        border-radius: 2rem;
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+
+            &.active {
+                background-color: #f3f3f3;
+                padding: 1rem;
+                border-radius: 2rem;
+            }
+
+            & small {
+                font-size: .5rem;
+            }
+        }
+    }
 }
 
-.steps-number ul {
-    all: unset;
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: lightgray;
-    padding: .3rem;
-    border-radius: 2rem;
-}
-
-.steps-number ul li {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.steps-number ul li small {
-    font-size: .5rem;
-}
-
-.active {
-    background-color: #f3f3f3;
-    padding: 1rem;
-    border-radius: 2rem;
-}
 </style>
