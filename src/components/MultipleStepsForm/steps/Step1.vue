@@ -2,12 +2,12 @@
 import steps from '../../../data/steps'
 const step = steps.find((step) => step.id === 'step1')
 
-const emits = defineEmits(['part-is-completed'])
+const emits = defineEmits(['step-is-completed'])
 
 const onNext = () => {
     // if u need validation, add here
 
-    emits('part-is-completed')
+    emits('step-is-completed')
 }
 </script>
 
