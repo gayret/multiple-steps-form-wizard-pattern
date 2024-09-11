@@ -2,15 +2,15 @@
 import steps from '../../../data/steps'
 const step = steps.find((step) => step.id === 'step2')
 
-const emits = defineEmits(['part-is-completed', 'go-previous-part'])
+const emits = defineEmits(['step-is-completed', 'go-previous-step'])
 
 const onNext = () => {
     // if u need validation, add here
 
-    emits('part-is-completed')
+    emits('step-is-completed')
 }
 
-const onPrevious = () => emits('go-previous-part')
+const onPrevious = () => emits('go-previous-step')
 </script>
 
 <template>
