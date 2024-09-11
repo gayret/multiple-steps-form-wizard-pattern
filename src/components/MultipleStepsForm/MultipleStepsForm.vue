@@ -32,9 +32,9 @@ const setActiveStepId = id => activeStepId.value = id
         </section>
 
         <section class="active-step">
-            <Step1 v-if="activeStepId === 'step1'" @part-is-completed="setActiveStepId('step2')" />
-            <Step2 v-if="activeStepId === 'step2'" @part-is-completed="setActiveStepId('step3')" @go-previous-part="setActiveStepId('step1')" />
-            <Step3 v-if="activeStepId === 'step3'" @part-is-completed="setActiveStepId('completed')" @go-previous-part="setActiveStepId('step2')" />
+            <Step1 v-if="activeStepId === 'step1'" @step-is-completed="setActiveStepId('step2')" />
+            <Step2 v-if="activeStepId === 'step2'" @step-is-completed="setActiveStepId('step3')" @go-previous-part="setActiveStepId('step1')" />
+            <Step3 v-if="activeStepId === 'step3'" @step-is-completed="setActiveStepId('completed')" @go-previous-part="setActiveStepId('step2')" />
             <Completed v-if="activeStepId === 'completed'" />
         </section>
     </section>
