@@ -5,3 +5,20 @@ html {
 header h2 {
   text-align: center;
 }
+
+label {
+  margin-bottom: .5rem;
+  font-weight: bold;
+  font-size: .8rem;
+}
+
+input {
+  padding: .3rem;
+  border: 2px solid skyblue;
+  border-radius: .5rem;
+  outline: none;
+}
+
+input:active, input:focus {
+  border-color: rgb(112, 112, 255);
+}

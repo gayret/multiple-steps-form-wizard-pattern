@@ -1,8 +1,8 @@
 <script setup>
-import { reactive } from 'vue';
+import { ref } from 'vue';
 import MultipleStepsForm from './components/MultipleStepsForm/MultipleStepsForm.vue'
 
-const formData = reactive({})
+const formData = ref([])
 </script>
 
 <template>
@@ -10,7 +10,7 @@ const formData = reactive({})
 
   <section class="result-as-json">
     <strong>Result as JSON</strong>
-    <pre>{{formData}}</pre>
+    <pre>{{ formData }}</pre>
   </section>
   
   <footer>

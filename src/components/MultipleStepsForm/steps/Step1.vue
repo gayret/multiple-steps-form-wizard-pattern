@@ -12,9 +12,8 @@ const onNext = () => {
 </script>
 
 <template>
-<header>
-    <h2>{{ step.title }}</h2>
-</header>
+<header><h2>{{ step.title }}</h2></header>
+
 <main>
     <section class="field" v-for="field in step.fields" :key="field.label">
         <label :for="field.label">{{ field.label }}</label>

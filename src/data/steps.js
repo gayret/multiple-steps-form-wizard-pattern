@@ -33,13 +33,6 @@ const steps = reactive([
                 "placeholder": "Enter your email address",
                 "key": "email",
                 "value": ""
-            },
-            {
-                "label": "Phone Number",
-                "type": "tel",
-                "placeholder": "Enter your phone number",
-                "key": "phoneNumber",
-                "value": ""
             }
         ]
     },

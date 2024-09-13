@@ -1,8 +1,8 @@
 <script setup>
 // Depends
 import steps from '../../data/steps'
-import { ref, defineModel } from 'vue'
-const vmodel = defineModel({type: Object})
+import { ref } from 'vue'
+const modelValue = defineModel({type: Object})
 
 // Components
 import Step1 from './steps/Step1.vue'
@@ -13,6 +13,22 @@ import Completed from './steps/Completed.vue'
 const activeStepId = ref('step1') // 'step1', 'step2', 'step3', 'completed'
 
 const setActiveStepId = id => activeStepId.value = id
+
+const onCompletedForm = () => {
+    const payload = steps.map((step) => {
+        return {
+            id: step.id,
+            fields: step.fields.map((field) => {
+                return {
+                    key: field.key,
+                    value: field.value
+                }
+            })
+        }
+    })
+    modelValue.value = payload
+    setActiveStepId('completed')
+}
 </script>
 
 <template>
@@ -24,7 +40,8 @@ const setActiveStepId = id => activeStepId.value = id
 
         <section v-if="activeStepId !== 'completed'" class="steps-number">
             <ul>
-                <li v-for="step in steps" :key="step.id" :class="{active: step.id === activeStepId}">
+                <li v-for="step in steps" :key="step.id" :class="{active: step.id === activeStepId}"
+                @click="activeStepId = step.id">
                     {{ step.number }}
                     <small>{{ step.title }}</small>
                 </li>
@@ -34,7 +51,7 @@ const setActiveStepId = id => activeStepId.value = id
         <section class="active-step">
             <Step1 v-if="activeStepId === 'step1'" @step-is-completed="setActiveStepId('step2')" />
             <Step2 v-if="activeStepId === 'step2'" @step-is-completed="setActiveStepId('step3')" @go-previous-step="setActiveStepId('step1')" />
-            <Step3 v-if="activeStepId === 'step3'" @step-is-completed="setActiveStepId('completed')" @go-previous-step="setActiveStepId('step2')" />
+            <Step3 v-if="activeStepId === 'step3'" @step-is-completed="onCompletedForm" @go-previous-step="setActiveStepId('step2')" />
             <Completed v-if="activeStepId === 'completed'" />
         </section>
     </section>
@@ -48,13 +65,17 @@ const setActiveStepId = id => activeStepId.value = id
     padding: 1rem;
     border-radius: .5rem;
 
+    & .active-step {
+        padding-inline: 6rem;
+    }
+
     & .steps-number ul {
         all: unset;
         list-style: none;
         display: flex;
         justify-content: space-around;
         align-items: center;
-        background-color: lightgray;
+        background-color: #eaeaea;
         padding: .3rem;
         border-radius: 2rem;
 
@@ -75,5 +96,4 @@ const setActiveStepId = id => activeStepId.value = id
         }
     }
 }
-
 </style>
